@@ -2,6 +2,7 @@ import { createServer, type Server as ServerType } from "node:http";
 import path from "node:path";
 
 import express from "express";
+import cors from "cors";
 import { Server as SocketIOServer } from "socket.io";
 
 import { Sockets } from "@/models/sockets";
@@ -21,6 +22,7 @@ export class Server {
   }
   middlewares() {
     this.app.use(express.static(path.resolve(__dirname, "../../public")));
+    this.app.use(cors());
   }
 
   configSockets() {
