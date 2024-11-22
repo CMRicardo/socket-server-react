@@ -19,29 +19,9 @@
     ></script>
     <script type="module">
       const socket = io("http://localhost:3000");
-
-      const chatForm = document.querySelector("#chatForm");
-      const messages = document.querySelector("#myMessages");
-      const txtChat = document.querySelector("#txtChat");
-
-      chatForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        socket.emit("chat-message", {
-          message: txtChat.value,
-        });
-        txtChat.value = "";
-      });
-
-      socket.on("message-from-server", (data) => {
-        console.log("From socket on message-from-server", data);
-        messages.innerHTML += `<li>${data.message}</li>`;
-      });
-      // setTimeout(() => {
-      //   socket.emit("chat-message", {
-      //     message: "Hello from the client",
-      //   });
-      // }, 2000);
+      socket.on('current-bands', (bands) => {
+        console.log(bands);
+      })
     </script>
     <script
       type="module"
@@ -51,27 +31,6 @@
     ></script>
   </head>
   <body class="container">
-    <h1 class="mt-5">Mini chat</h1>
-    <hr />
-    <form id="chatForm">
-      <div class="row">
-        <div class="col-8">
-          <input
-            id="txtChat"
-            type="text"
-            placeholder="Message"
-            class="form-control"
-          />
-        </div>
-        <div class="col-4">
-          <button type="submit" class="btn btn-primary">Send</button>
-        </div>
-      </div>
-    </form>
-    <div class="row">
-      <div class="col">
-        <ul id="myMessages"></ul>
-      </div>
-    </div>
+    <h1>Access denied</h1>
   </body>
 </html>
